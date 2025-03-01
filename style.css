@@ -1,0 +1,32 @@
+/* cascading style sheet */
+/* styling our websites */
+
+img {
+  height: 275px;
+  border-radius: 10px;
+}
+
+body {
+  text-align: center;
+  font-family: "Delius Swash Caps", serif;
+}
+
+div {
+  background-color: #98ace6;
+  border-radius: 20px;
+}
+
+header {
+  background-color: #f7b0bb;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#subheadings {
+  background-color: #f9c3cb;
+  padding: 10px;
+}
+
+h3 {
+   font-family: "Imperial Script", serif;
+}
