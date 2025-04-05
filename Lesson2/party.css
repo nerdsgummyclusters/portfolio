@@ -1,0 +1,116 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+header, footer {
+  color: white;
+  background-color: indianred;
+  text-align: center;
+  padding: 50px;
+  margin: 0;
+}
+
+ol {
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+  /* space between two li  */
+  margin: 10px;
+  /* space inside the li */
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+section {
+  box-shadow: 0 2px 10px grey;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+background-color: white;
+}
+
+.player {
+  border: 7px solid #cb5252;
+  border-radius: 10px;
+  text-align: center;
+  /* space between the characters */
+  margin: 10px;
+  /* space between the border and stuff in our box */
+  padding: 10px;
+  width: 270px;
+  transition: transform 0.2s;
+}
+
+.player:hover {
+  transform: scale(1.05);
+}
+
+#player-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+ /* px = pixels */
+/* % = percentage, responsive */
+table  {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+th {
+
+  background-color: indianred;
+  color: floralwhite;
+}
+
+tr:hover {
+  background-color: lightgray;
+}
+
+#hidden {
+  visibility: hidden;
+}
+
+#secret:hover #hidden{
+  visibility: visible;
+}
+
+.fan {
+  color: black;
+}
+
+/* #FFB6C1  pink mobile min. 320 max 425*/
+/* #FFDBE9 ligher pink tablet  min. 430 max. 768 */
+/* #FFE6EE light pink computer  min. 770 max. 1440*/
+
+/* mobile responsiveness */
+@media (max-width:425px) {
+  body {
+    background-color:#FFB6C1 ;
+  }
+}
+/* tablet responsiveness */
+@media (min-width:430px) and (max-width:770px) {
+  body {
+    background-color:#FFDBE9 ;
+  }
+}
+/* computer responsiveness */
+@media (min-width:775px) {
+  body {
+    background-color:#FFE6EE;
+  }
+}
