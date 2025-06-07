@@ -1,0 +1,91 @@
+ body {
+    background-color: #9e9f70;
+ }
+
+ div {
+    /* background-color: teal; */
+    width: 100%;
+    height: 600px;
+    /* 
+  border  
+  thickness (3px)
+  type (solid, dotted, dashed)
+  color */
+    border-bottom: 7px dashed #653434;
+    position: relative;
+ }
+
+ #sterling_town {
+    position: absolute;
+    bottom: -20%;
+    z-index: 0;
+
+    /* animation */
+    animation-name: Sterling;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+ }
+
+ @keyframes Sterling {
+    from {
+       left: 100%
+    }
+
+    to {
+       left: -100%
+    }
+ }
+
+
+ #gunsmith {
+    position: absolute;
+    bottom: -25%;
+    z-index: -1;
+
+    /* animation */
+    animation-name: Gunsmith;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+ }
+
+ @keyframes Gunsmith {
+    from {
+       left: 100%
+    }
+
+    to {
+       left: -100%
+    }
+ }
+
+ #train {
+    position: absolute;
+    bottom: 0%;
+    z-index: 3;
+
+ }
+
+ #bandit_camp {
+    position: absolute;
+    bottom: -7%;
+    z-index: 2;
+    
+     /* animation */
+     animation-name: Bandit_Camp;
+     animation-duration: 7s;
+     animation-timing-function: linear;
+     animation-iteration-count: infinite;
+ }
+
+ @keyframes Bandit_Camp {
+    from {
+       left: 100%
+    }
+
+    to {
+       left: -100%
+    }
+ }
