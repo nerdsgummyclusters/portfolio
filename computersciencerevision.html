@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Micro:bit Programming Skills – Interactive Notes & Quizzes</title>
+  <style>
+    :root{
+      --bg:#0b1324; /* deep navy */
+      --card:#111a33; /* slightly lighter */
+      --muted:#95a1c3;
+      --text:#eef2ff;
+      --accent:#7c9cff;
+      --accent-2:#54e1b7;
+      --danger:#ff6b6b;
+      --ok:#58d38c;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:linear-gradient(180deg, #0b1324 0%, #0c1730 60%, #0b1222 100%);
+    }
+    header{
+      padding:48px 20px; text-align:center; position:sticky; top:0; backdrop-filter: blur(10px);
+      background:linear-gradient(180deg, rgba(11,19,36,.9), rgba(11,19,36,.6)); border-bottom:1px solid rgba(124,156,255,.15);
+      z-index:20;
+    }
+    h1{font-size: clamp(1.5rem, 2vw + 1rem, 2.3rem); margin:0 0 8px}
+    .subtitle{color:var(--muted)}
+    main{max-width:1100px; margin: 24px auto 80px; padding: 0 16px}
+    .grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:18px}
+    .card{
+      background:var(--card); border:1px solid rgba(124,156,255,.15); border-radius:20px; padding:18px 18px 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+    .section-title{display:flex; align-items:center; gap:10px; margin:0 0 6px}
+    .badge{font-size:.8rem; color:#0b1324; background:var(--accent); padding:3px 10px; border-radius:999px; font-weight:700}
+    h2{font-size:1.2rem; margin:6px 0 10px}
+    h3{font-size:1.05rem; margin:14px 0 8px}
+    p{line-height:1.55; color:#e7ebff}
+    ul{margin:8px 0 0 18px}
+    li{margin:6px 0}
+
+    .qa{display:flex; align-items: flex-start; gap:10px; margin:10px 0; padding:10px; border-radius:12px; background:rgba(124,156,255,.08); border:1px dashed rgba(124,156,255,.25)}
+    .qa b{white-space:nowrap}
+    .tick{color:var(--accent-2); font-weight:800}
+
+    details{margin-top:10px}
+    summary{cursor:pointer; color:var(--accent); font-weight:700}
+
+    .quiz{margin-top:12px; padding:12px; border-radius:16px; background:rgba(124,156,255,.06); border:1px solid rgba(124,156,255,.15)}
+    .question{margin:8px 0; padding:8px 10px; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08)}
+    .question legend{font-weight:700}
+    .choices{display:flex; flex-direction:column; gap:6px; margin-top:6px}
+
+    .btn{appearance:none; border:none; background:var(--accent); color:#0b1324; font-weight:800; padding:10px 14px; border-radius:12px; cursor:pointer; margin-top:10px}
+    .btn.secondary{background:transparent; color:var(--accent); border:1px solid rgba(124,156,255,.35)}
+
+    .score{margin-top:10px; font-weight:800}
+    .correct{outline:2px solid var(--ok)}
+    .incorrect{outline:2px solid var(--danger)}
+
+    footer{max-width:1100px; margin: 40px auto; padding: 0 16px; color:var(--muted)}
+    .pill{display:inline-block; border:1px solid rgba(124,156,255,.35); padding:6px 10px; border-radius:999px; margin:6px 6px 0 0}
+    .code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:rgba(124,156,255,.12); padding:2px 6px; border-radius:6px}
+    .kicker{font-weight:800; color:var(--accent-2)}
+  </style>
+</head>
+<body>
+  <header>
+    <h1> Micro:bit Programming Skills</h1>
+  </header>
+
+  <main>
+    <!-- SECTION 1: Sequencing & Animation -->
+    <section class="card" id="s1">
+      <div class="section-title"><span class="badge">1</span><h2>Sequencing & Animation</h2></div>
+      <div class="qa"><b>Can I arrange code blocks in the correct order to display images?</b> <span class="tick">✔ Yes.</span>&nbsp;Sequencing is putting instructions in order so images appear when you expect.</div>
+      <div class="qa"><b>Can I animate images on the Micro:bit screen correctly?</b> <span class="tick">✔ Yes.</span>&nbsp;Show frames one after another with small pauses to make movement.</div>
+      <div class="qa"><b>Can I combine multiple images to create a sequence?</b> <span class="tick">✔ Yes.</span>&nbsp;Chain frames together to tell a story or show motion.</div>
+      <h3> Explanation</h3>
+      <p>Computers follow instructions one by one. The <span class="code">display.show()</span> steps (or MakeCode image blocks) run in order; fast changes plus pauses create animation. If the order is wrong, the result is wrong.</p>
+
+      <div class="quiz" id="quiz1">
+        <h3>Mini Quiz – Sequencing & Animation</h3>
+        <fieldset class="question" data-answer="b">
+          <legend>1) What creates the illusion of movement on the Micro:bit?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q1" value="a"> Showing one image very slowly</label>
+            <label><input type="radio" name="q1" value="b"> Rapidly switching images with short pauses</label>
+            <label><input type="radio" name="q1" value="c"> Increasing screen brightness</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="c">
+          <legend>2) If frames run out of order, what most likely happens?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q2" value="a"> The animation becomes faster</label>
+            <label><input type="radio" name="q2" value="b"> The Micro:bit resets</label>
+            <label><input type="radio" name="q2" value="c"> The animation looks wrong or confusing</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="a">
+          <legend>3) Why use a pause between frames?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q3" value="a"> To control timing so motion looks smooth</label>
+            <label><input type="radio" name="q3" value="b"> To save battery only</label>
+            <label><input type="radio" name="q3" value="c"> To increase screen resolution</label>
+          </div>
+        </fieldset>
+        <button class="btn" onclick="checkQuiz('quiz1')">Check answers</button>
+        <button class="btn secondary" onclick="resetQuiz('quiz1')">Reset</button>
+        <div class="score"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Selection & Input -->
+    <section class="card" id="s2">
+      <div class="section-title"><span class="badge">2</span><h2>Selection & Input</h2></div>
+      <div class="qa"><b>Can I use if…else statements to control what happens?</b> <span class="tick">✔ Yes.</span>&nbsp;Selection chooses different actions when conditions are true or false.</div>
+      <div class="qa"><b>Can I respond to button presses to change variable values?</b> <span class="tick">✔ Yes.</span>&nbsp;Use button A/B events to increase/decrease numbers like scores.</div>
+      <div class="qa"><b>Can I use inputs (buttons, pins, or sensors) to trigger actions?</b> <span class="tick">✔ Yes.</span>&nbsp;Inputs are triggers that make your program react.</div>
+      <h3> Explanation</h3>
+      <p>Selection is decision-making: <span class="code">if / else</span>. Inputs provide data (pressed, tilted, touched) and your code branches to the correct behaviour.</p>
+
+      <div class="quiz" id="quiz2">
+        <h3>Mini Quiz – Selection & Input</h3>
+        <fieldset class="question" data-answer="b">
+          <legend>1) Which block lets your program choose between two actions?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q4" value="a"> repeat</label>
+            <label><input type="radio" name="q4" value="b"> if…else</label>
+            <label><input type="radio" name="q4" value="c"> show leds</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="a">
+          <legend>2) How could a score increase by 1 when button A is pressed?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q5" value="a"> In the <em>on button A pressed</em> event, set <span class="code">score = score + 1</span></label>
+            <label><input type="radio" name="q5" value="b"> Put <em>pause</em> inside <em>forever</em></label>
+            <label><input type="radio" name="q5" value="c"> Shake the Micro:bit</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="c">
+          <legend>3) Which is an input?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q6" value="a"> display.show()</label>
+            <label><input type="radio" name="q6" value="b"> pause(100)</label>
+            <label><input type="radio" name="q6" value="c"> pin touched</label>
+          </div>
+        </fieldset>
+        <button class="btn" onclick="checkQuiz('quiz2')">Check answers</button>
+        <button class="btn secondary" onclick="resetQuiz('quiz2')">Reset</button>
+        <div class="score"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Iteration (Loops) -->
+    <section class="card" id="s3">
+      <div class="section-title"><span class="badge">3</span><h2>Iteration (Loops)</h2></div>
+      <div class="qa"><b>Can I use loops to repeat code or patterns?</b> <span class="tick">✔ Yes.</span>&nbsp;Loops repeat instructions many times automatically.</div>
+      <div class="qa"><b>Can I control light sequences using loops and timing?</b> <span class="tick">✔ Yes.</span>&nbsp;Blink or sweep LEDs with repeats and pauses.</div>
+      <div class="qa"><b>Can I use iteration to simplify repetitive tasks?</b> <span class="tick">✔ Yes.</span>&nbsp;Shorter code that’s easier to change.</div>
+      <h3> Explanation</h3>
+      <p>Iteration is repetition. Use <span class="code">repeat N</span> blocks for a fixed number of times, or <span class="code">forever</span> to keep running. Timing makes patterns visible.</p>
+
+      <div class="quiz" id="quiz3">
+        <h3>Mini Quiz – Loops</h3>
+        <fieldset class="question" data-answer="a">
+          <legend>1) Which loop runs without stopping?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q7" value="a"> forever</label>
+            <label><input type="radio" name="q7" value="b"> repeat 10</label>
+            <label><input type="radio" name="q7" value="c"> if…else</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="b">
+          <legend>2) Best way to blink the centre LED five times?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q8" value="a"> Write the code five times</label>
+            <label><input type="radio" name="q8" value="b"> Use repeat 5 with show/clear + pauses</label>
+            <label><input type="radio" name="q8" value="c"> Use random</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="c">
+          <legend>3) Why do programmers like loops?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q9" value="a"> They look cool</label>
+            <label><input type="radio" name="q9" value="b"> They make code slower</label>
+            <label><input type="radio" name="q9" value="c"> They reduce repetition and errors</label>
+          </div>
+        </fieldset>
+        <button class="btn" onclick="checkQuiz('quiz3')">Check answers</button>
+        <button class="btn secondary" onclick="resetQuiz('quiz3')">Reset</button>
+        <div class="score"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Variables & Text -->
+    <section class="card" id="s4">
+      <div class="section-title"><span class="badge">4</span><h2>Variables & Text</h2></div>
+      <div class="qa"><b>Can I create variables to store numbers or text?</b> <span class="tick">✔ Yes.</span>&nbsp;Variables are named boxes that hold values like <span class="code">score</span> or <span class="code">name</span>.</div>
+      <div class="qa"><b>Can I update and display variable values on the Micro:bit?</b> <span class="tick">✔ Yes.</span>&nbsp;Change them in code and show with <span class="code">show number</span> or <span class="code">show string</span>.</div>
+      <div class="qa"><b>Can I use variables to track scores or changing data?</b> <span class="tick">✔ Yes.</span>&nbsp;Perfect for counters, timers, and scores.</div>
+      <h3> Explanation</h3>
+      <p>A variable stores data that can change while a program runs. Numbers (integers) are great for counting; strings hold text. Display values to give feedback to the user.</p>
+
+      <div class="quiz" id="quiz4">
+        <h3>Mini Quiz – Variables & Text</h3>
+        <fieldset class="question" data-answer="b">
+          <legend>1) What is a variable?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q10" value="a"> A fixed image</label>
+            <label><input type="radio" name="q10" value="b"> A named storage for data</label>
+            <label><input type="radio" name="q10" value="c"> A battery level</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="a">
+          <legend>2) Which shows numbers on the Micro:bit?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q11" value="a"> show number</label>
+            <label><input type="radio" name="q11" value="b"> set brightness</label>
+            <label><input type="radio" name="q11" value="c"> clear screen</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="c">
+          <legend>3) Good variable name for a reaction timer?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q12" value="a"> x</label>
+            <label><input type="radio" name="q12" value="b"> thingy</label>
+            <label><input type="radio" name="q12" value="c"> reactionTime</label>
+          </div>
+        </fieldset>
+        <button class="btn" onclick="checkQuiz('quiz4')">Check answers</button>
+        <button class="btn secondary" onclick="resetQuiz('quiz4')">Reset</button>
+        <div class="score"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Images & Pixels -->
+    <section class="card" id="s5">
+      <div class="section-title"><span class="badge">5</span><h2>Images & Pixels</h2></div>
+      <div class="qa"><b>Can I manipulate individual pixels to design images?</b> <span class="tick">✔ Yes.</span>&nbsp;Use coordinates (x,y) to turn LEDs on/off.</div>
+      <div class="qa"><b>Can I create custom images for the Micro:bit display?</b> <span class="tick">✔ Yes.</span>&nbsp;Design 5×5 patterns to show icons, sprites, or text effects.</div>
+      <h3> Explanation</h3>
+      <p>The Micro:bit display is a 5×5 LED grid. Each pixel can be set to on/off (and brightness in MakeCode). Building images means setting the right pixels to form shapes or letters.</p>
+
+      <div class="quiz" id="quiz5">
+        <h3>Mini Quiz – Images & Pixels</h3>
+        <fieldset class="question" data-answer="b">
+          <legend>1) How many LEDs are on the Micro:bit display grid?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q13" value="a"> 10</label>
+            <label><input type="radio" name="q13" value="b"> 25</label>
+            <label><input type="radio" name="q13" value="c"> 50</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="a">
+          <legend>2) Turning on a single pixel uses…</legend>
+          <div class="choices">
+            <label><input type="radio" name="q14" value="a"> x,y coordinates</label>
+            <label><input type="radio" name="q14" value="b"> a random number</label>
+            <label><input type="radio" name="q14" value="c"> battery level</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="c">
+          <legend>3) A 5×5 heart is best described as…</legend>
+          <div class="choices">
+            <label><input type="radio" name="q15" value="a"> one big pixel</label>
+            <label><input type="radio" name="q15" value="b"> text only</label>
+            <label><input type="radio" name="q15" value="c"> a pattern of on/off pixels</label>
+          </div>
+        </fieldset>
+        <button class="btn" onclick="checkQuiz('quiz5')">Check answers</button>
+        <button class="btn secondary" onclick="resetQuiz('quiz5')">Reset</button>
+        <div class="score"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Sound & Pins -->
+    <section class="card" id="s6">
+      <div class="section-title"><span class="badge">6</span><h2>Sound & Pins</h2></div>
+      <div class="qa"><b>Can I detect pin presses to trigger events?</b> <span class="tick">✔ Yes.</span>&nbsp;Use <em>on pin P0/P1/P2 pressed</em> events.</div>
+      <div class="qa"><b>Can I play different tones to create a simple instrument?</b> <span class="tick">✔ Yes.</span>&nbsp;Map buttons or pins to notes and use <em>play tone</em>.</div>
+      <div class="qa"><b>Can I combine pin input and sound output?</b> <span class="tick">✔ Yes.</span>&nbsp;Pins choose notes; speaker/buzzer plays them.</div>
+      <h3> Explanation</h3>
+      <p>Pins are physical connectors that detect touch/press or read sensors. Sound output can use the on-board speaker (v2) or external buzzer on P0. Combine them to build instruments or alarms.</p>
+
+      <div class="quiz" id="quiz6">
+        <h3>Mini Quiz – Sound & Pins</h3>
+        <fieldset class="question" data-answer="a">
+          <legend>1) Which can trigger a sound?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q16" value="a"> on pin P0 pressed</label>
+            <label><input type="radio" name="q16" value="b"> show string</label>
+            <label><input type="radio" name="q16" value="c"> clear screen</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="b">
+          <legend>2) To make a musical scale you should…</legend>
+          <div class="choices">
+            <label><input type="radio" name="q17" value="a"> randomise brightness</label>
+            <label><input type="radio" name="q17" value="b"> map each input to a different tone</label>
+            <label><input type="radio" name="q17" value="c"> use forever with no pauses</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="c">
+          <legend>3) Micro:bit v2 can play sound using…</legend>
+          <div class="choices">
+            <label><input type="radio" name="q18" value="a"> only external speaker</label>
+            <label><input type="radio" name="q18" value="b"> no speaker support</label>
+            <label><input type="radio" name="q18" value="c"> an on-board speaker or external buzzer</label>
+          </div>
+        </fieldset>
+        <button class="btn" onclick="checkQuiz('quiz6')">Check answers</button>
+        <button class="btn secondary" onclick="resetQuiz('quiz6')">Reset</button>
+        <div class="score"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: Sensors & Outputs -->
+    <section class="card" id="s7">
+      <div class="section-title"><span class="badge">7</span><h2>Sensors & Outputs</h2></div>
+      <div class="qa"><b>Can I read values from sensors (light, tilt, pins)?</b> <span class="tick">✔ Yes.</span>&nbsp;Use input blocks like light level, accelerometer, temperature, and pin read.</div>
+      <div class="qa"><b>Can I control outputs (lights/sounds) based on sensor inputs?</b> <span class="tick">✔ Yes.</span>&nbsp;Make reactive projects like night-lights, alarms, or step counters.</div>
+      <h3> Explanation</h3>
+      <p>Sensors convert physical changes into data your code can use. Outputs (LEDs, sounds) respond to that data. This is the basis of interactive systems.</p>
+
+      <div class="quiz" id="quiz7">
+        <h3>Mini Quiz – Sensors & Outputs</h3>
+        <fieldset class="question" data-answer="b">
+          <legend>1) Which sensor detects movement/tilt?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q19" value="a"> Magnetometer</label>
+            <label><input type="radio" name="q19" value="b"> Accelerometer</label>
+            <label><input type="radio" name="q19" value="c"> Speaker</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="a">
+          <legend>2) A night-light turns LEDs on when light level is low. What code structure helps?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q20" value="a"> if (light &lt; threshold) then show LEDs</label>
+            <label><input type="radio" name="q20" value="b"> forever with no condition</label>
+            <label><input type="radio" name="q20" value="c"> play random tone</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="c">
+          <legend>3) Reading an analogue sensor on P1 uses…</legend>
+          <div class="choices">
+            <label><input type="radio" name="q21" value="a"> show icon</label>
+            <label><input type="radio" name="q21" value="b"> digital write</label>
+            <label><input type="radio" name="q21" value="c"> analog read</label>
+          </div>
+        </fieldset>
+        <button class="btn" onclick="checkQuiz('quiz7')">Check answers</button>
+        <button class="btn secondary" onclick="resetQuiz('quiz7')">Reset</button>
+        <div class="score"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: Randomness & Timing -->
+    <section class="card" id="s8">
+      <div class="section-title"><span class="badge">8</span><h2>Randomness & Timing</h2></div>
+      <div class="qa"><b>Can I generate random numbers or choices in a program?</b> <span class="tick">✔ Yes.</span>&nbsp;Use <span class="code">pick random</span> to create games, choices, or unpredictable delays.</div>
+      <h3> Explanation</h3>
+      <p>Randomness adds variety. Timing (pauses, countdowns) controls pace. Together they power games like rock–paper–scissors or reaction tests.</p>
+
+      <div class="quiz" id="quiz8">
+        <h3>Mini Quiz – Randomness & Timing</h3>
+        <fieldset class="question" data-answer="c">
+          <legend>1) Which block gives an unpredictable number within a range?</legend>
+          <div class="choices">
+            <label><input type="radio" name="q22" value="a"> show number</label>
+            <label><input type="radio" name="q22" value="b"> repeat</label>
+            <label><input type="radio" name="q22" value="c"> pick random</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="a">
+          <legend>2) To add suspense before showing a result you should…</legend>
+          <div class="choices">
+            <label><input type="radio" name="q23" value="a"> use a pause or countdown</label>
+            <label><input type="radio" name="q23" value="b"> always use forever</label>
+            <label><input type="radio" name="q23" value="c"> clear screen constantly</label>
+          </div>
+        </fieldset>
+        <fieldset class="question" data-answer="b">
+          <legend>3) In rock–paper–scissors, the Micro:bit’s choice could be…</legend>
+          <div class="choices">
+            <label><input type="radio" name="q24" value="a"> always rock</label>
+            <label><input type="radio" name="q24" value="b"> pick random from 0–2 mapped to choices</label>
+            <label><input type="radio" name="q24" value="c"> whatever the user picked</label>
+          </div>
+        </fieldset>
+        <button class="btn" onclick="checkQuiz('quiz8')">Check answers</button>
+        <button class="btn secondary" onclick="resetQuiz('quiz8')">Reset</button>
+        <div class="score"></div>
+      </div>
+    </section>
+
+    <footer>
+      <p class="kicker">Teacher tips:</p>
+      <p>
+        Use these sections as quick-learning stations. Students can record scores for each quiz or screenshot their results. Try extension tasks like: <span class="pill">Animate a 4‑frame sprite</span> <span class="pill">Build a tilt‑controlled game</span> <span class="pill">Make a pin‑powered instrument</span> <span class="pill">Create a reaction timer with random delay</span>
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    function checkQuiz(id){
+      const box = document.getElementById(id);
+      const questions = box.querySelectorAll('.question');
+      let correct = 0, total = questions.length;
+      questions.forEach((q, i)=>{
+        const ans = q.dataset.answer;
+        const name = q.querySelector('input[type="radio"]').name;
+        const checked = box.querySelector(`input[name="${name}"]:checked`);
+        q.classList.remove('correct','incorrect');
+        if(checked){
+          if(checked.value === ans){
+            q.classList.add('correct'); correct++;
+          } else {
+            q.classList.add('incorrect');
+          }
+        } else {
+          q.classList.add('incorrect');
+        }
+      });
+      const score = box.querySelector('.score');
+      score.textContent = `Score: ${correct} / ${total}`;
+      score.style.color = correct === total ? 'var(--ok)' : 'var(--accent)';
+    }
+    function resetQuiz(id){
+      const box = document.getElementById(id);
+      box.querySelectorAll('input[type="radio"]').forEach(r=> r.checked = false);
+      box.querySelectorAll('.question').forEach(q=> q.classList.remove('correct','incorrect'));
+      const score = box.querySelector('.score');
+      score.textContent = '';
+    }
+  </script>
+</body>
+</html>
