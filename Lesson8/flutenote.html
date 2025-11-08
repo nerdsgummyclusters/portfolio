@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Note Guessing</title>
+  <link rel="stylesheet" href="flutenote.css">
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+  </style>
+</head>
+<body>
+  <h1>Note Guessing</h1>
+  <h2>Guess the note being played by the flute</h2>
+  <div>
+  <button id="c" onclick="submit('c')">c</button>
+  <button id="d" onclick="submit('d')">d</button>
+  <button id="e" onclick="submit('e')">e</button>
+  <button id="f" onclick="submit('f')">f</button>
+  <button id="g" onclick="submit('g')">g</button>
+  <button id="a" onclick="submit('a')">a</button>
+  <button id="b" onclick="submit('b')"">b</button>
+ </div>
+   <button onclick="playAudio()" id="Play">Play</button>
+   <button id="Next" onclick="next()">Next</button>
+  <p id="score">Score</p>
+  <script src="flutenote.js"> </script>
+</body>
+</html>

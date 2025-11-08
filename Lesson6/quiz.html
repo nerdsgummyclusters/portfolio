@@ -1,0 +1,58 @@
+<!-- 
+
+Raven - introverted, reading, telekinesis, crow, fried chicken,
+Robin - perfectionist, planning, nothing, dog, sandwich 
+Beast Boy - unorganised, eating, shapeshifting, donkey, tofu
+Cyborg - extroverted, building things, have superhuman abilities, lion, burger
+Starfire - kind, playing with animals, flying, cat, pancakes
+
+Quiz Questions  
+How would you describe yourself? Whats your favourite hobby? If you were a superhero, what power would you want? If you could be an animal, what would you be? Which food is your favourite out of these?
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Quiz</title>
+  <link rel="icon" href="t.png">
+  <link rel="stylesheet" href="quiz.css">
+  <script src="quiz.js" ></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+</head>
+
+<body onload="start()">
+  <!-- starting page -->
+  <div id="starting_page">
+    <h1>Teen Titans Go Personality Quiz</h1>
+    <p>Which Teen Titans Go Character Are You?</p>
+     <button class="button-56" role="button" onclick="startgame()">Start</button>
+  </div>
+
+  <!-- question page -->
+  <div id="question_page">
+    <h2 id="question">How would you describe yourself?</h2>
+     <button id="button1" class="button-56" role="button"  onclick="answer(this)">Introverted</button>
+     <button id="button2" class="button-56" role="button" onclick="answer(this)">Perfectionist</button>
+     <button id="button3"class="button-56" role="button" onclick="answer(this)">Unorganised</button>
+     <button id="button4"class="button-56" role="button" onclick="answer(this)">Extroverted </button>
+     <button id="button5" class="button-56" role="button" onclick="answer(this)">Kind</button>
+  </div>
+ 
+
+  <!-- ending page -->
+  <div id="ending_page">
+    <h2 id="ending_text"> You resemble Raven!</h2>
+    <p id="ending_desc">Raven is mainly introverted but when someone messes with her, she can and will give them what they deserve.</p>
+    <img id="ending_pic" src="raven.webp" alt="Raven">
+  </div>
+</body>
+
+</html>
+
