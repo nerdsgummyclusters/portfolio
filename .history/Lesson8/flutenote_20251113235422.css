@@ -18,7 +18,3 @@ button {
 button:hover {
 	cursor: pointer;
 }
-
-#score {
-	font-size: 2rem;
-}
